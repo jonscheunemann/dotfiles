@@ -1,6 +1,7 @@
 # dotfiles
 ### cloning
 For cloning you use
+
 `git clone --bare git@github.com:jonscheunemann/dotfiles.git $HOME/.dotfiles`
 
 Then say
