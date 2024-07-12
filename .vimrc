@@ -49,7 +49,6 @@ if has('python3')
 endif
 
 " execute pathogen#infect()
-
 filetype off                  " required
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
