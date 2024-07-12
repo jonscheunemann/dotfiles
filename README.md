@@ -24,3 +24,6 @@ Now we are (seemingly)ready to checkout.
 which probably gives you some conflicts. 
 
 Worry not, just rename the conflictingfiles to `<conflicting file>.old`, since they will be replaced by more sensibleconfigs.
+
+
+(Inspired by https://www.atlassian.com/git/tutorials/dotfiles, github.com/eddie0809)
