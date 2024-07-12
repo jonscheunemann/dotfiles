@@ -5,15 +5,13 @@
 
 For cloning you use
 
-`git clone --bare git@github.com:eddie0809/dotfiles.git $HOME/.dotfiles`
+`git clone --bare git@github.com:jonscheunemann/dotfiles.git $HOME/.dotfiles`
 
 Then say
 
-`echo "alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/
---work-tree=$HOME'" >> $HOME/.bashrc`
+`echo "alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.bashrc`
 
-ousing `source ~/.bashrc`) if you haven't installed
-zsh). 
+and the ofc `source .bashrc` or restart shell.
 #### recommended settings
 
 `dotfiles config --local status.showUntrackedFiles no`
