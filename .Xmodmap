@@ -1,0 +1,7 @@
+! Remap Caps Lock to Escape
+clear Lock
+keycode 66 = Escape
+
+! Remap Escape to Caps Lock
+keycode 9 = Caps_Lock
+
