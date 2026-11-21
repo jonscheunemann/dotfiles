@@ -44,6 +44,14 @@ alias l='ls -lav --ignore=.?*'   # show long listing but no hidden dotfiles exce
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
 
+## History: by default bash writes it only on clean exit and the last tab to
+## close overwrites the others -> commands got lost after crashes/failed hibernate.
+shopt -s histappend
+HISTSIZE=100000
+HISTFILESIZE=200000
+HISTCONTROL=ignoreboth:erasedups
+PROMPT_COMMAND+=('history -a')   # append each command to ~/.bash_history immediately
+
 ################################################################################
 ## Some generally useful functions.
 ## Consider uncommenting aliases below to start using these functions.
