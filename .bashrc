@@ -111,3 +111,6 @@ export PATH="$HOME/.node/current/bin:$PATH"
 #------pyenv stuff---------------------------------
 #--------------------------------------------------
 alias dot='/usr/bin/git --git-dir=/home/jonny/.dotfiles/ --work-tree=/home/jonny'
+
+#------claude code: second account (own login/history, shared settings+skills via symlinks)------
+alias claude-research='CLAUDE_CONFIG_DIR=$HOME/.claude-research claude'
