@@ -33,6 +33,14 @@ Worry not, just rename the conflictingfiles to `<conflicting file>.old`, since t
 
 The tracked `~/.gitignore` excludes `.dotfiles`, so the repo can't add itself.
 
+### secrets (API keys)
+`.bashrc` loads every `~/.config/secrets/*.env` (plain `KEY=value` lines). That dir is
+gitignored; only `~/.config/secrets.example/` with the variable names is tracked. Once per machine:
+
+`cp -r ~/.config/secrets.example ~/.config/secrets && chmod 700 ~/.config/secrets && chmod 600 ~/.config/secrets/*.env`
+
+then fill in the values. Add new keys to both the real file and the template (name only).
+
 ### claude code
 Skills live in their own repo; clone it once:
 
