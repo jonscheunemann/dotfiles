@@ -1,0 +1,2 @@
+# the bare repo lives inside its own work tree ($HOME); never let it track itself
+.dotfiles

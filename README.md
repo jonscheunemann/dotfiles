@@ -25,6 +25,14 @@ which probably gives you some conflicts.
 
 Worry not, just rename the conflictingfiles to `<conflicting file>.old`, since they will be replaced by more sensibleconfigs.
 
+#### upstream tracking
+`git clone --bare` sets neither a fetch refspec nor an upstream, so `dot push` fails with
+"has no upstream branch". Fix once per machine:
+
+`dot config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*' && dot fetch && dot branch -u origin/main`
+
+The tracked `~/.gitignore` excludes `.dotfiles`, so the repo can't add itself.
+
 ### claude code
 Skills live in their own repo; clone it once:
 
