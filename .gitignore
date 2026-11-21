@@ -1,2 +1,5 @@
 # the bare repo lives inside its own work tree ($HOME); never let it track itself
 .dotfiles
+
+# API keys; only the names template ~/.config/secrets.example/ is tracked
+.config/secrets/

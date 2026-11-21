@@ -127,6 +127,15 @@ alias dot='/usr/bin/git --git-dir=/home/jonny/.dotfiles/ --work-tree=/home/jonny
 #------claude code: second account (own login/history, shared settings+skills via symlinks)------
 alias claude-research='CLAUDE_CONFIG_DIR=$HOME/.claude-research claude'
 
+#------secrets: API keys from untracked ~/.config/secrets/*.env (KEY=value lines)------
+# set -a exports every assignment, so the files need no "export" and stay .env-compatible.
+# The dir is in the tracked ~/.gitignore, so `dot add` refuses it without -f;
+# ~/.config/secrets.example/ is the tracked template with the variable names.
+for _f in "$HOME"/.config/secrets/*.env; do
+    [ -r "$_f" ] && { set -a; . "$_f"; set +a; }
+done
+unset _f
+
 #------atuin: ranked fuzzy history search on Ctrl-R------
 # --disable-up-arrow keeps the prefix search on Up/Down defined above.
 command -v atuin >/dev/null && eval "$(atuin init bash --disable-up-arrow)"
