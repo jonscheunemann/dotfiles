@@ -5,6 +5,10 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# ble.sh (grey history suggestions) must be sourced early; it is attached at the
+# very end of this file so everything in between is set up first.
+[[ -f /usr/share/blesh/ble.sh ]] && source /usr/share/blesh/ble.sh --attach=none
+
 [[ -f ~/.welcome_screen ]] && . ~/.welcome_screen
 
 _set_liveuser_PS1() {
@@ -126,3 +130,17 @@ alias claude-research='CLAUDE_CONFIG_DIR=$HOME/.claude-research claude'
 #------atuin: ranked fuzzy history search on Ctrl-R------
 # --disable-up-arrow keeps the prefix search on Up/Down defined above.
 command -v atuin >/dev/null && eval "$(atuin init bash --disable-up-arrow)"
+
+#------ble.sh: accept grey suggestion with Shift+Tab (Tab stays completion)------
+if [[ ${BLE_VERSION-} ]]; then
+    _ble_keys() { ble-bind -m auto_complete -f S-TAB auto_complete/insert; }
+    blehook/eval-after-load complete _ble_keys
+    # ble.sh default: Alt+Backspace/Alt+Delete only *copy* a word -> restore readline's delete
+    # Alt+Backspace arrives as C-M-? (DEL) or M-C-h (terminals that send ^H)
+    for _k in 'C-M-?' M-C-h; do ble-bind -f "$_k" kill-backward-cword; done
+    ble-bind -f M-delete kill-forward-cword
+    unset _k
+    # suggestion as plain grey text (default is dark text on a light-grey box)
+    ble-face auto_complete=fg=244
+    ble-attach   # must stay the last line
+fi
