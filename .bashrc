@@ -122,3 +122,7 @@ alias dot='/usr/bin/git --git-dir=/home/jonny/.dotfiles/ --work-tree=/home/jonny
 
 #------claude code: second account (own login/history, shared settings+skills via symlinks)------
 alias claude-research='CLAUDE_CONFIG_DIR=$HOME/.claude-research claude'
+
+#------atuin: ranked fuzzy history search on Ctrl-R------
+# --disable-up-arrow keeps the prefix search on Up/Down defined above.
+command -v atuin >/dev/null && eval "$(atuin init bash --disable-up-arrow)"
